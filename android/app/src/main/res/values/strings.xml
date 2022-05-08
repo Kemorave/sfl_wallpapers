@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<resources>
+<string name="app_name">Sfl</string>
+<string name="facebook_app_id">513311310269058</string>
+<string name="fb_login_protocol_scheme">fb1234</string>
+<string name="facebook_client_token">c0d5f0073de8cc5b66bf52af1fe31804</string>
+</resources>
