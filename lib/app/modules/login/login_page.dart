@@ -46,7 +46,7 @@ class LoginPage extends GetView<LoginController> {
                       borderRadius: BorderRadius.all(Radius.circular(20))),
                   elevation: 10,
                   child: Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
