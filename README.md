@@ -1,7 +1,7 @@
 # SFL
 ## _Free wallpaper downloader_
 
-SFL is a only a sample project that i created to learn flutter you can download the apk from here https://www.mediafire.com/file/x9s3mxathlczb5a/app-release.apk/file
+SFL is a only a sample project that i created to gain more experience in flutter you can download the apk from here https://www.mediafire.com/file/x9s3mxathlczb5a/app-release.apk/file
 
 [![N|Flutter](https://docs.flutter.dev/assets/images/shared/brand/flutter/logo/flutter-lockup.png)](https://docs.flutter.dev/)
  
