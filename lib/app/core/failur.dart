@@ -5,6 +5,6 @@ class Failur {
   final String? errorMessage;
   final String? errorCode;
   final IconData? icon;
-
-  Failur([this.errorTitle, this.errorMessage, this.errorCode, this.icon]);
+  final Object? error;
+ const Failur({this.errorTitle, this.errorMessage, this.errorCode, this.icon,this.error});
 }

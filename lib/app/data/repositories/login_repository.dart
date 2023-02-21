@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:sfl/app/core/failur.dart';
 import 'package:sfl/app/core/action_result.dart';
+
+import '../core/errors_info.dart';
 
 class SigninResult extends ActionResult<UserCredential> {
   SigninResult([Failur? failur, UserCredential? result])
@@ -29,7 +30,7 @@ class LoginRepository {
       );
       return SigninResult(null, await _auth.signInWithCredential(credential));
     } on FirebaseAuthException catch (e) {
-      return SigninResult(Failur(null, e.message, e.code, Icons.error), null);
+      return SigninResult(FirebaseFailures.fromCode(e.code), null);
     }
   }
 
@@ -40,7 +41,7 @@ class LoginRepository {
           .signInWithEmailAndPassword(email: email, password: password);
       return SigninResult(null, res);
     } on FirebaseAuthException catch (e) {
-      return SigninResult(Failur(null, e.message, e.code, Icons.error), null);
+      return SigninResult(FirebaseFailures.fromCode(e.code), null);
     }
   }
 
@@ -60,12 +61,12 @@ class LoginRepository {
         case LoginStatus.cancelled:
           return null;
         case LoginStatus.failed:
-          return SigninResult(Failur("Failed", result.message), null);
+          return SigninResult(Failur(errorTitle: "Login Failed",errorMessage:  result.message), null);
         default:
-          return SigninResult(Failur(), null);
+          return SigninResult(const Failur(errorTitle: "Uknown"), null);
       }
     } on FirebaseAuthException catch (e) {
-      return SigninResult(Failur("Fail", e.message), null);
+      return SigninResult(Failur(errorTitle: "Error occured",errorMessage:  e.message,error: e), null);
     }
   }
 }
