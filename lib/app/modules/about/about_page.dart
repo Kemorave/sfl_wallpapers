@@ -2,24 +2,19 @@
 
 import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:getwidget/components/button/gf_button.dart';
-import 'package:getwidget/components/button/gf_icon_button.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:sfl/app/core/theme/main_colors.dart';
-import 'package:sfl/app/core/widgets/transparent_clip.dart';
 
-import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import '../../core/widgets/default_appbar.dart';
 import '../home/home_controller.dart';
 
 class AboutPage extends StatelessWidget {
+  const AboutPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    double h = MediaQuery.of(context).size.height;
-    double w = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: DefaultAppbar(AppBar(
         title: Text("About"),

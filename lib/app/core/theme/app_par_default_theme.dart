@@ -5,7 +5,7 @@ class AppParDefaultTheme extends AppBarTheme {
   AppParDefaultTheme()
       : super(
           systemOverlayStyle:
-              SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
+              const SystemUiOverlayStyle(statusBarBrightness: Brightness.dark),
           backgroundColor: Colors.white.withOpacity(.08),
           elevation: 0,
         );

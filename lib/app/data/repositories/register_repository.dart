@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:sfl/app/core/failur.dart';
 
+import '../core/errors_info.dart';
 import 'login_repository.dart';
 
 class RegisterRepository {
@@ -11,7 +11,7 @@ class RegisterRepository {
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
               email: email, password: password));
     } on FirebaseAuthException catch (e) {
-      return SigninResult(Failur(null, e.message));
+      return SigninResult(FirebaseFailures.fromCode(e.code));
     }
   }
 }

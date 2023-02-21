@@ -1,29 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 import 'dart:io';
-import 'dart:typed_data';
 import 'dart:ui';
 import 'dart:async';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:getwidget/components/avatar/gf_avatar.dart';
-import 'package:getwidget/components/card/gf_card.dart';
-import 'package:getwidget/components/drawer/gf_drawer.dart';
-import 'package:getwidget/components/drawer/gf_drawer_header.dart';
-import 'package:getwidget/getwidget.dart';
-import 'package:getwidget/position/gf_position.dart';
 import 'package:open_file/open_file.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sfl/app/core/base_controller.dart';
-import 'package:sfl/app/core/theme/main_colors.dart';
 
+  //TODO Heavy cleanup and create a channels service class. :( man i hope i find a job that worth all this
 class ImageController extends BaseController {
   final String url;
   final String id;
@@ -32,10 +18,9 @@ class ImageController extends BaseController {
   final exist = false.obs;
   String path = "";
   static String? dirPath;
-  var name;
-  ImageController(this.url, this.id, this.furl) {
-    name = "sfl image $id.png";
-  }
+  String get name => "sfl image $id.png";
+  
+  ImageController(this.url, this.id, this.furl);
   Future checkExist() async {
     if (dirPath == null) {
       const platform = MethodChannel('sfl.flutter.dev/downloadf');
@@ -54,17 +39,6 @@ class ImageController extends BaseController {
     update();
     try {
       if (!await Permission.storage.request().isGranted) return;
-
-      /* final ByteData imageData =
-          await NetworkAssetBundle(Uri.parse(furl)).load("");
-      final Uint8List bytes = imageData.buffer.asUint8List();
-      final dirs = (await getExternalStorageDirectories(
-          type: StorageDirectory.downloads));
-      final directory = dirs?.first;
-      final fpath = '${directory?.path}/$id.png';
-      var _transferedImage = File(fpath);
-      await _transferedImage.writeAsBytes(bytes);
- */
       const platform = MethodChannel('sfl.flutter.dev/downloadf');
       await platform.invokeMethod("downloadImage", {"furl": furl, "id": name});
       await checkExist();
@@ -79,10 +53,8 @@ class ImageController extends BaseController {
 }
 
 class MyItem {
-  MyItem(this.name, this.url, this.id, this.furl) {
-    ic = ImageController(url, id, furl);
-  }
-  ImageController? ic;
+  MyItem(this.name, this.url, this.id, this.furl);
+  late ImageController ic = ImageController(url, id, furl);
   final String name;
 
   final String url;
@@ -120,7 +92,7 @@ class HomeController extends GetxController with GetTickerProviderStateMixin {
     var physicalWidth = physicalScreenSize.width.toInt() + 200;
     var physicalHeight = physicalScreenSize.height.toInt() + 200;
     Future.microtask(() async {
-      for (var i = 0; i < n; i++) {
+      for (var i = 0; i <= n; i++) {
         last.value++;
         var it = MyItem(
             "Image $last",
