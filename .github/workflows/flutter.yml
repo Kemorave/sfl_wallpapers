@@ -37,11 +37,9 @@ jobs:
           cache: true
       # 12
       - name: Get dependencies
-        run: flutter pub get
+        run: flutter pub get; flutter pub run build_runner build --delete-conflicting-outputs   
 
-      # Runs a set of commands using the runners shell
-      - name: Start generator
-        run: flutter pub run build_runner build --delete-conflicting-outputs
+
         
       # Runs a set of commands using the runners shell
       - name: Start release build
