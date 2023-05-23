@@ -12,7 +12,7 @@ class UnitOfWork {
   UnitOfWork();
   final UserRepository userRepository = UserRepository();
   final IncidentRepository incidentRepository = IncidentRepository();
-  final ColectionRepository categoryRepository = ColectionRepository();
+  final CollectionRepository categoryRepository = CollectionRepository();
   final NotificationRepository notificationRepository =
       NotificationRepository();
   dispose() {

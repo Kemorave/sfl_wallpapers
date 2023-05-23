@@ -10,11 +10,11 @@ import '../cache/cache_helper.dart';
 import '../model/sub_category_model.dart';
 import '../network/server_responce.dart';
 import 'package:cached_annotation/cached_annotation.dart';
-part 'category_repository.cached.dart';
+part 'collection_repository.cached.dart';
 
 @WithCache()
-abstract class ColectionRepository implements IDisposibleRepository {
-  factory ColectionRepository() = _CategoryRepository;
+abstract class CollectionRepository implements IDisposibleRepository {
+  factory CollectionRepository() = _CollectionRepository;
   @override
   late IHttpClient client = ApiHttpClient();
 
