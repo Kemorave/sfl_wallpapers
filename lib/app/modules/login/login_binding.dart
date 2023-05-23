@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:sfl/app/data/repositories/login_repository.dart';
+import 'package:sfl/app/data/repositories/account_repository.dart';
 
 import 'login_controller.dart';
 

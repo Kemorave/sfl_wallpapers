@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class Failur {
-  final String? errorTitle;
-  final String? errorMessage;
-  final String? errorCode;
-  final IconData? icon;
+  final String? title;
+  final String? message;
   final Object? error;
- const Failur({this.errorTitle, this.errorMessage, this.errorCode, this.icon,this.error});
+  final IconData? icon;
+  final String? errorCode;
+  static Failur fromError(Object error, String? msg) =>
+      Failur(error: error, message: msg);
+  Failur({this.message, this.title, this.error, this.errorCode, this.icon});
 }

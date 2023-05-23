@@ -1,9 +1,28 @@
+import 'package:sfl/app/core/failur.dart';
+import 'package:get/get.dart';
 
-import 'failur.dart';
+class ActionResult<T > {
+  final Failur? error;
+  final T? result;
+  final Response? responce;
+  bool get hasError => error != null;
+  static ActionResult<A> empty<A >() => ActionResult<A>();
+  static Future<ActionResult<X>> runAsync<X >(
+      Future<X> Function() fun) async {
+    try {
+      return ActionResult(result: await fun());
+    } catch (e) {
+      return ActionResult<X>(error: Failur(error: e));
+    }
+  }
 
-class ActionResult<Result> {
-  final Failur? failur;
-  final Result? result;
+  static ActionResult<X> run<X >(X Function() fun) {
+    try {
+      return ActionResult(result: fun());
+    } catch (e) {
+      return ActionResult<X>(error: Failur(error: e));
+    }
+  }
 
-  ActionResult([this.failur, this.result]);
+  ActionResult({this.error, this.result, this.responce});
 }

@@ -10,7 +10,7 @@ import 'register_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = '/home';
+  static const INITIAL = "/splash";
   static String getInitialRout() {
     var v = FirebaseAuth.instance;
     return v.currentUser == null ? "/login" : INITIAL;

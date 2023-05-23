@@ -14,21 +14,21 @@ class _FirebaseCodeErrors {
 }
 
 class FirebaseFailures {
-  static const Failur wrongPasswordFailur = Failur(
-      errorTitle: _FirebaseErrors.firebaseRegistrationException,
-      errorMessage: "The provided email is already in use by an existing user.",
+  static Failur wrongPasswordFailur = Failur(
+      title: _FirebaseErrors.firebaseRegistrationException,
+      message: "The provided email is already in use by an existing user.",
       errorCode: _FirebaseCodeErrors.emailAlreadyExist,
       icon: Icons.email);
 
-  static const Failur wrongEmailFailur = Failur(
-      errorTitle: _FirebaseErrors.firebaseLoginException,
-      errorMessage: "The password is invalid.",
+  static Failur wrongEmailFailur = Failur(
+      title: _FirebaseErrors.firebaseLoginException,
+      message: "The password is invalid.",
       errorCode: _FirebaseCodeErrors.wrongPassword,
       icon: Icons.password_rounded);
 
-  static const Failur serverAuthFailur = Failur(
-      errorTitle: _FirebaseErrors.firebaseAuthException,
-      errorMessage: "Authentication error occured",
+  static Failur serverAuthFailur = Failur(
+      title: _FirebaseErrors.firebaseAuthException,
+      message: "Authentication error occured",
       errorCode: _FirebaseCodeErrors.firebaseAuth,
       icon: Icons.cloud_off);
 

@@ -179,7 +179,7 @@ class RegisterPage extends GetView<RegisterController> {
                                     passwordTextEditingController.text);
                                 if (res.result == null) {
                                   GFToast.showToast(
-                                      res.failur?.errorMessage, context);
+                                      res.failur?.message, context);
                                 }
                               },
                               text: "Register",

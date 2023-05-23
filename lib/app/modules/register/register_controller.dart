@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:lottie/lottie.dart';
-import 'package:sfl/app/data/repositories/login_repository.dart';
+import 'package:sfl/app/data/repositories/account_repository.dart';
 import 'package:sfl/app/data/repositories/register_repository.dart';
 
 import '../../core/base_controller.dart';

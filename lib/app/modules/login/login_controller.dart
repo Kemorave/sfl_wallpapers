@@ -1,29 +1,24 @@
 import 'package:get/get.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get_state_manager/src/simple/list_notifier.dart';
+import 'package:sfl/app/core/action_result.dart';
 import 'package:sfl/app/core/base_controller.dart';
-import 'package:sfl/app/core/common_states.dart';
-import 'package:sfl/app/data/repositories/login_repository.dart';
+import 'package:sfl/app/core/state_enum.dart';
+import 'package:sfl/app/data/repositories/account_repository.dart';
 
 class LoginController extends BaseController {
   final emailErrMessage = "".obs;
   final passwordErrMessage = "".obs;
   final errMessage = "".obs;
+  final message = "".obs;
   final hidePass = true.obs;
   var repo = Get.find<LoginRepository>();
-  @override
-  void onInit() {
-    title.value = "Login";
-    super.onInit();
-  }
 
-  void _continueToHome(SigninResult? res) async {
+  void _continueToHome(ActionResult<UserCredential?> res) async {
     errMessage.value = "";
-    if (res == null) return;
-    if (res.failur != null) {
-      errMessage.value = res.failur?.errorMessage ?? "";
+    if (res.error != null) {
+      errMessage.value = res.error?.message ?? "";
     } else {
-      state.value = CommonStates.succes;
+      state.value = StateEnum.success;
       message.value = "Welcome";
     }
   }
@@ -31,7 +26,8 @@ class LoginController extends BaseController {
   void signInWithGoogle() async {
     isBusy.value = true;
     errMessage.value = '';
-    var res = await repo.signInwithGoogle();
+    var res =
+        await ActionResult.runAsync<UserCredential?>(repo.signInwithGoogle);
     _continueToHome(res);
     isBusy.value = false;
   }
@@ -39,7 +35,8 @@ class LoginController extends BaseController {
   void signInWithFacebook() async {
     isBusy.value = true;
     errMessage.value = '';
-    var res = await repo.loginByFacebook();
+    var res =
+        await ActionResult.runAsync<UserCredential?>(repo.loginByFacebook);
     _continueToHome(res);
     isBusy.value = false;
   }
@@ -65,7 +62,8 @@ class LoginController extends BaseController {
     errMessage.value = '';
     if (!triggerCheck(email, password)) return;
     isBusy.value = true;
-    var res = await repo.loginByEmail(email, password);
+    var res = await ActionResult.runAsync<UserCredential?>(
+        () => repo.loginByEmail(email, password));
     _continueToHome(res);
     isBusy.value = false;
   }

@@ -109,7 +109,7 @@ class SendEmailStep extends GetView<ResetPasswordController> {
                             reEmailTextEditingController.text);
                         if (ss.result == false) {
                           GFToast.showToast(
-                              ss.failur?.errorMessage ?? "Error", context);
+                              ss.failur?.message ?? "Error", context);
                         }
                       }
                     });
@@ -173,7 +173,7 @@ class CodeVerifyStep extends GetView<ResetPasswordController> {
                       var ss = await controller.verifyPasswordResetCode(
                           confirmTextEditingController.text);
                       if (ss.result == false) {
-                        GFToast.showToast(ss.failur?.errorMessage, context);
+                        GFToast.showToast(ss.failur?.message, context);
                       }
                     },
                     text: "Confirm",
@@ -309,7 +309,7 @@ class InputPasswordStep extends GetView<ResetPasswordController> {
                       var res = await controller
                           .resetPassword(passwordTextEditingController.text);
                       if (res.result == false) {
-                        GFToast.showToast(res.failur?.errorMessage, context);
+                        GFToast.showToast(res.failur?.message, context);
                       }
                     },
                     text: "Change password",

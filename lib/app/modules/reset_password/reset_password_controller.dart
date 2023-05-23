@@ -3,7 +3,7 @@ import 'package:lottie/lottie.dart';
 import 'package:sfl/app/core/base_controller.dart';
 import 'package:sfl/app/data/repositories/reset_password_repository.dart';
 
-import '../../data/repositories/login_repository.dart';
+import '../../data/repositories/account_repository.dart';
 
 class ResetPasswordController extends BaseController {
   String _code = "";
