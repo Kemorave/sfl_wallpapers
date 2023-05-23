@@ -1,0 +1,4 @@
+storePassword=PASSWORD
+keyPassword=PASSWORD
+keyAlias=APP_NAME
+storeFile=\APP_NAME.keystore

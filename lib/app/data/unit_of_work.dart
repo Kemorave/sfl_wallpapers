@@ -1,6 +1,6 @@
 // ignore_for_file: constant_identifier_names
 
-import 'package:sfl/app/data/repositories/category_repository.dart';
+import 'package:sfl/app/data/repositories/collection_repository.dart';
 import 'package:sfl/app/data/repositories/incident_repository.dart';
 import 'package:sfl/app/data/repositories/notification_repository.dart';
 
@@ -12,7 +12,7 @@ class UnitOfWork {
   UnitOfWork();
   final UserRepository userRepository = UserRepository();
   final IncidentRepository incidentRepository = IncidentRepository();
-  final CategoryRepository categoryRepository = CategoryRepository();
+  final ColectionRepository categoryRepository = ColectionRepository();
   final NotificationRepository notificationRepository =
       NotificationRepository();
   dispose() {

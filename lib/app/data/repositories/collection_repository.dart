@@ -13,8 +13,8 @@ import 'package:cached_annotation/cached_annotation.dart';
 part 'category_repository.cached.dart';
 
 @WithCache()
-abstract class CategoryRepository implements IDisposibleRepository {
-  factory CategoryRepository() = _CategoryRepository;
+abstract class ColectionRepository implements IDisposibleRepository {
+  factory ColectionRepository() = _CategoryRepository;
   @override
   late IHttpClient client = ApiHttpClient();
 
